@@ -30,8 +30,8 @@
 }
 
 - (YKFileArray *)cutFilesFromList:(BOOL (^)(YKFile *file))pFunction {
-	YKFileArray *files = [NSMutableArray new];
-	if (!pFunction) files;
+	YKFileArray *files = [YKFileArray new];
+	if (!pFunction) return files;
 	[files eachFile:^(YKFile *file, NSUInteger idx) {
 		if (pFunction(files)) [files addObject:file];
 	}];
