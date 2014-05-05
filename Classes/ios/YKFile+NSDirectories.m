@@ -18,13 +18,17 @@
 
 + (instancetype)cachesDirectory {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	NSString *cachePath = [paths firstObject];
+	if (paths && [paths count] > 0) {
+	} else return nil;
+	NSString *cachePath = paths[0];
 	return [YKFile fileWithPath:cachePath];
 }
 
 + (instancetype)documentsDirectory {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectoryPath = [paths firstObject];
+	if (paths && [paths count] > 0) {
+	} else return nil;
+	NSString *documentsDirectoryPath = paths[0];
 	return [YKFile fileWithPath:documentsDirectoryPath];
 }
 
